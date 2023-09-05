@@ -1,0 +1,30 @@
+public class Duplicate_Parentheses{
+    public static boolean isDuplicate(String str){
+        Stack<Character> s = new Stack<>();
+        char ch = str.charAt(i);
+        //Closing condition
+        if(ch == ')'){
+            int count = 0;
+            while(s.peek() != '('){
+                s.pop();
+                count++;
+            }
+            if(count < 1){
+                return true; //duplicate exists
+            } else {
+                s.pop(); //opening pair
+            }
+        } else {
+            //Opening condition
+            s.push(ch);
+        }
+        return false;
+    }
+    public static void main(String args[]){
+        // Valid String
+        String str1 = "((a+b))";  // output = true
+        String str2 = "(a-b)";  // output = false
+        System.out.println(isDuplicate(str1));
+    }
+}
+//TC = o(n) as linear time
